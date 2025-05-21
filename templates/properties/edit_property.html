@@ -1,0 +1,200 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}
+Edit Property
+{% endblock %}
+
+{% block content %}
+<main class="py-10 flex justify-center">
+  <form action="{% url 'edit_property' property.id %}" method="POST" enctype="multipart/form-data" class="bg-[#fff] flex flex-col items-center gap-2 w-lg h-auto p-5 border-2 border-gray-200 shadow-md dark:border-gray-700 dark:bg-gray-900 rounded-lg">
+    {% csrf_token %}
+    <h1 class="font-bold text-2xl">Edit Property</h1>
+
+    <div class="w-full flex gap-5">
+      <div class="w-full flex flex-col gap-1">
+        <label for="Type" class="font-semibold text-gray-500 ml-2">Type</label>
+
+        <div class="relative w-full flex flex-col">
+          <img src="/static/images/icons/house.svg" alt="house" class="absolute size-4 top-2.5 left-3.5" />
+
+          {% render_field property_form.property_type class+="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" %}
+        </div>
+        <p class="mt-1 text-sm text-red-600">{{ property_form.property_form.errors.0 }}</p>
+      </div>
+
+      <div class="w-full flex flex-col gap-1">
+        <label for="rent" class="font-semibold text-gray-500 ml-2">Rent</label>
+
+        <div class="relative w-full flex flex-col">
+          <img src="/static/images/icons/money.svg" alt="money" class="absolute size-5 top-2.5 left-2.5" />
+
+          {% render_field property_form.price placeholder="Find houses to rent..." class+="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" %}
+        </div>
+        <p class="mt-1 text-sm text-red-600">{{ property_form.price.errors.0 }}</p>
+      </div>
+    </div>
+
+    <div class="w-full flex gap-5">
+      <div class="w-full flex flex-col gap-1">
+        <label for="bathroom" class="font-semibold text-gray-500 ml-2">Bathroom</label>
+
+        <div class="relative w-full flex flex-col">
+          <img src="/static/images/icons/bathroom.svg" alt="bathroom" class="absolute size-5 top-2.5 left-2.5" />
+
+          {% render_field property_form.bathroom placeholder="Find houses to rent..." class+="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" %}
+        </div>
+        <p class="mt-1 text-sm text-red-600">{{ property_form.bathroom.errors.0 }}</p>
+      </div>
+
+      <div class="w-full flex flex-col gap-1">
+        <label for="bedroom" class="font-semibold text-gray-500 ml-2">Bedroom</label>
+
+        <div class="relative w-full flex flex-col">
+          <img src="/static/images/icons/bedroom.svg" alt="bedroom" class="absolute size-5 top-2.5 left-2.5" />
+
+          {% render_field property_form.bedroom placeholder="Find houses to rent..." class+="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" %}
+        </div>
+        <p class="mt-1 text-sm text-red-600">{{ property_form.bedroom.errors.0 }}</p>
+      </div>
+
+      <div class="w-full flex flex-col gap-1">
+        <label for="square-meter" class="font-semibold text-gray-500 ml-2">Square Meter</label>
+
+        <div class="relative w-full flex flex-col">
+          <img src="/static/images/icons/area.svg" alt="area" class="absolute size-5 top-2.5 left-2.5" />
+
+          {% render_field property_form.square_meter placeholder="Find houses to rent..." class+="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" %}
+        </div>
+        <p class="mt-1 text-sm text-red-600">{{ property_form.square_meter.errors.0 }}</p>
+      </div>
+    </div>
+
+    <div class="w-full flex flex-col gap-1">
+      <label for="images" class="font-semibold text-gray-500 ml-2">Images</label>
+
+      <div class="relative w-full flex flex-col">
+        
+        <input id="id_image" name="images"  class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 focus:ring-transparent" id="multiple_files" type="file" multiple>
+
+      </div>
+      <p class="mt-1 text-sm text-red-600">{{ error }}</p>
+    </div>
+    <div class="w-full flex flex-wrap gap-1">
+    {% for image in property.images.all %}
+    <div>
+        <img src="{{ image.image.url }}" style="max-height:100px;">
+        <label>
+            <input type="checkbox" name="delete_images" value="{{ image.id }}">
+            Delete
+        </label>
+    </div>
+    {% endfor %}
+    </div>
+    <div class="w-full flex flex-col gap-1">
+      <label for="address" class="font-semibold text-gray-500 ml-2">Address</label>
+
+      <div class="relative w-full flex flex-col">
+        <img src="/static/images/icons/address.svg" alt="" class="absolute size-6 top-2 left-2.5" />
+
+        {% render_field address_form.full_address placeholder="Find houses to rent..." class+="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" %}
+      </div>
+      <p class="mt-1 text-sm text-red-600">{{ address_form.full_address.errors.0 }}</p>
+    </div>
+
+    <div class="w-full flex gap-5">
+      <div class="w-full flex flex-col gap-1">
+        <label for="country" class="font-semibold text-gray-500 ml-2">Country</label>
+
+        <div class="relative w-full flex flex-col">
+          <img src="/static/images/icons/country.svg" alt="country" class="absolute size-4 top-2.5 left-3" />
+
+          {% render_field address_form.country placeholder="Find houses to rent..." class+="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" %}
+        </div>
+        <p class="mt-1 text-sm text-red-600">{{ address_form.country.errors.0 }}</p>
+      </div>
+
+      <div class="w-full flex flex-col gap-1">
+        <label for="state" class="font-semibold text-gray-500 ml-2">State</label>
+
+        <div class="relative w-full flex flex-col">
+          <img src="/static/images/icons/state.svg" alt="state" class="absolute size-5 top-2.5 left-2.5" />
+
+          {% render_field address_form.state placeholder="Find houses to rent..." class+="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" %}
+        </div>
+        <p class="mt-1 text-sm text-red-600">{{ address_form.state.errors.0 }}</p>
+      </div>
+    </div>
+
+    <div class="w-full flex gap-5">
+      <div class="w-full flex flex-col gap-1">
+        <label for="city" class="font-semibold text-gray-500 ml-2">
+          City
+        </label>
+
+        <div class="relative w-full flex flex-col">
+          <img src="/static/images/icons/city.svg" alt="city" class="absolute size-5 top-2.5 left-2.5" />
+
+          {% render_field address_form.city placeholder="Find houses to rent..." class+="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" %}
+        </div>
+        <p class="mt-1 text-sm text-red-600">{{ address_form.city.errors.0 }}</p>
+      </div>
+
+      <div class="w-full flex flex-col gap-1">
+        <label for="neighborhood" class="font-semibold text-gray-500 ml-2">Neighborhood</label>
+
+        <div class="relative w-full flex flex-col">
+          <img src="/static/images/icons/neighborhood.svg" alt="neighborhood"
+            class="absolute size-5 top-2.5 left-2.5" />
+
+            {% render_field address_form.neighborhood placeholder="Find houses to rent..." class+="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" %}
+        </div>
+        <p class="mt-1 text-sm text-red-600">{{ address_form.neighborhood.errors.0 }}</p>
+      </div>
+    </div>
+
+    <div class="w-full flex gap-5">
+      <div class="w-full flex flex-col gap-1">
+        <label for="street" class="font-semibold text-gray-500 ml-2">Street</label>
+
+        <div class="relative w-full flex flex-col">
+          <img src="/static/images/icons/number.svg" alt="number" class="absolute size-5 top-2.5 left-2.5" />
+
+          {% render_field address_form.street_address placeholder="Find houses to rent..." class+="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" %}
+        </div>
+        <p class="mt-1 text-sm text-red-600">{{ address_form.street_address.errors.0 }}</p>
+      </div>
+
+      <div class="w-full flex flex-col gap-1">
+        <label for="zip" class="font-semibold text-gray-500 ml-2">Zip Code</label>
+
+        <div class="relative w-full flex flex-col">
+          <img src="/static/images/icons/zip.svg" alt="zip" class="absolute size-5 top-2.5 left-2.5" />
+          
+          {% render_field address_form.zip_code placeholder="Find houses to rent..." class+="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" %}
+        </div>
+        <p class="mt-1 text-sm text-red-600">{{ address_form.zip_code.errors.0 }}</p>
+      </div>
+    </div>
+
+    <div class="w-full flex flex-col gap-1">
+      <label for="complement" class="font-semibold text-gray-400 ml-2">Complement</label>
+
+      <div class="relative w-full flex flex-col">
+        <img src="/static/images/icons/complement.svg" alt="complement" class="absolute size-5 top-2.5 left-2.5" />
+
+        {% render_field address_form.complement placeholder="Find houses to rent..." class+="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" %}
+      </div>
+      <p class="mt-1 text-sm text-red-600">{{ address_form.complement.errors.0 }}</p>
+    </div>
+
+    <div class="flex justify-center items-center w-full h-full">
+      <button
+        class="cursor-pointer rounded-md bg-blue-400 py-2 px-4 border border-transparent text-center text-sm font-semibold text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-blue-300 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2"
+        type="submit">
+        Submit Form
+      </button>
+    </div>
+  </form>
+</main>
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="py-10">
+    <div class="flex h-full items-center justify-center">
+        <div
+            class="rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-900 flex-col flex h-full items-center justify-center sm:px-4">
+            <div class="flex h-full flex-col justify-center gap-4 p-6">
+                <div class="left-0 right-0 inline-block border-gray-200 px-2 py-2.5 sm:px-4">
+                    <form action="{% url 'register_user' %}" method="POST" enctype="multipart/form-data"
+                        class="flex flex-col gap-4 pb-4">
+                        {% csrf_token %}
+                        <h1 class="mb-4 text-2xl font-bold  dark:text-white">Signup</h1>
+                        <div>
+                            <div class="mb-2">
+                                <label class="text-sm font-medium text-gray-900 dark:text-gray-300"
+                                    for="first-name">First Name</label>
+                            </div>
+                            <div class="flex w-full rounded-lg pt-1">
+                                <div class="relative w-full">
+                                    {% render_field form.first_name class+="block w-full border disabled:cursor-not-allowed disabled:opacity-50 bg-gray-50 border-gray-300 text-gray-900 focus:border-cyan-500 focus:ring-cyan-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 p-2.5 text-sm rounded-lg" %}
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="mb-2">
+                                <label class="text-sm font-medium text-gray-900 dark:text-gray-300"
+                                    for="first-name">Last Name</label>
+                            </div>
+                            <div class="flex w-full rounded-lg pt-1">
+                                <div class="relative w-full">
+                                    {% render_field form.last_name class+="block w-full border disabled:cursor-not-allowed disabled:opacity-50 bg-gray-50 border-gray-300 text-gray-900 focus:border-cyan-500 focus:ring-cyan-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 p-2.5 text-sm rounded-lg" %}
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="mb-2">
+                                <label class="text-sm font-medium text-gray-900 dark:text-gray-300"
+                                    for="email">Email:</label>
+                            </div>
+                            <div class="flex w-full rounded-lg pt-1">
+                                <div class="relative w-full">
+                                    {% render_field form.email class+="block w-full border disabled:cursor-not-allowed disabled:opacity-50 bg-gray-50 border-gray-300 text-gray-900 focus:border-cyan-500 focus:ring-cyan-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 p-2.5 text-sm rounded-lg" %}
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="mb-2">
+                                <label class="text-sm font-medium text-gray-900 dark:text-gray-300"
+                                    for="username">Username</label>
+                            </div>
+                            <div class="flex w-full rounded-lg pt-1">
+                                <div class="relative w-full">
+                                    {% render_field form.username class+="block w-full border disabled:cursor-not-allowed disabled:opacity-50 bg-gray-50 border-gray-300 text-gray-900 focus:border-cyan-500 focus:ring-cyan-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 p-2.5 text-sm rounded-lg" %}
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="mb-2">
+                                <label class="text-sm font-medium text-gray-900 dark:text-gray-300"
+                                    data-testid="flowbite-label" for="password">Password</label>
+                            </div>
+                            <div class="flex w-full rounded-lg pt-1">
+                                <div class="relative w-full">
+                                    {% render_field form.password class+="block w-full border disabled:cursor-not-allowed disabled:opacity-50 bg-gray-50 border-gray-300 text-gray-900 focus:border-cyan-500 focus:ring-cyan-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 p-2.5 text-sm rounded-lg" %}
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="mb-2">
+                                <label class="text-sm font-medium text-gray-900 dark:text-gray-300"
+                                    data-testid="flowbite-label" for="password">Confirm Password</label>
+                            </div>
+                            <div class="flex w-full rounded-lg pt-1">
+                                <div class="relative w-full">
+                                    {% render_field form.confirm_password class+="block w-full border disabled:cursor-not-allowed disabled:opacity-50 bg-gray-50 border-gray-300 text-gray-900 focus:border-cyan-500 focus:ring-cyan-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 p-2.5 text-sm rounded-lg" %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col pt-2">
+                            <button type="submit"
+                                class="border transition-colors focus:ring-2 p-0.5 cursor-pointer border-transparent bg-blue-400 hover:bg-blue-300 active:bg-sky-800 text-white disabled:bg-gray-300 disabled:text-gray-700 rounded-lg ">
+                                <span
+                                    class="flex items-center justify-center gap-1 font-medium py-1 px-2.5 text-base false">
+                                    Signup
+                                </span>
+                            </button>
+
+                        </div>
+                    </form>
+                    <div class="min-w-[270px]">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

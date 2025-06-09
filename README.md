@@ -1,119 +1,131 @@
 ````markdown
 # 🏡 Rent Wise – House Catalog Web App
 
-Rent Wise is a modern and responsive house catalog web application built with **Django** and **Tailwind CSS**. It allows users to browse, list, and manage rental properties easily.
+**Rent Wise** is a modern, responsive house catalog application built with **Django** and **Tailwind CSS**.  
+Users can browse, list, and manage rental properties with ease.
 
 ---
 
-## 🔧 Tech Stack
+## ⚙️ Tech Stack
 
-- **Backend:** Django (Python)
-- **Frontend:** Tailwind CSS
-- **Auth:** Custom Django app (`accounts`)
-- **Listings:** Managed by the `properties` app
-- **Styling Tooling:** Tailwind CSS via npm
-- **Environment Management:** `.env` support
+- 🐍 **Backend:** Django (Python)
+- 🎨 **Frontend:** Tailwind CSS via npm
+- 🔐 **Auth:** Custom Django app (`accounts`)
+- 🏘️ **Listings:** Managed by the `properties` app
+- 🛠️ **Tooling:** Environment variables with `.env`
 
 ---
 
 ## ✨ Features
 
-- 🏠 Create, edit, and delete house listings
-- 🔍 Filter and search for properties
-- 📸 Upload house images
-- 👤 User authentication (login, register)
-- 💡 Responsive layout with Tailwind CSS
-- ✅ Email validation (included)
+- 🏠 Create, update, and delete house listings
+- 🔍 Filter and search through properties
+- 📸 Upload property images
+- 👤 User registration and authentication
+- 📱 Fully responsive layout with Tailwind
+- ✅ Built-in email validation
 
 ---
 
 ## 🚀 Getting Started
 
-### 1. Clone the repository
+### 1️⃣ Clone the repository
 
 ```bash
 git clone https://github.com/PyWise/rent_wise.git
 cd rent_wise
 ````
 
-### 2. Create and activate a virtual environment
+### 2️⃣ Create and activate a virtual environment
 
 ```bash
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source venv/bin/activate      # On Windows: venv\Scripts\activate
 ```
 
-### 3. Install Python dependencies
+### 3️⃣ Install Python dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Install Node/Tailwind dependencies
+### 4️⃣ Install Tailwind (Node) dependencies
 
 ```bash
 npm install
 ```
 
-### 5. Copy the environment file
+### 5️⃣ Set up environment variables
 
 ```bash
 cp .env_sample .env
-# Then fill in your secret keys and configs
+# Fill in your secrets in the .env file
 ```
 
-### 6. Run database migrations
+### 6️⃣ Apply migrations
 
 ```bash
 python manage.py migrate
 ```
 
-### 7. Run the development server
+### 7️⃣ Start the development server
 
 ```bash
 python manage.py runserver
 ```
 
-Open your browser at `http://localhost:8000`.
+➡️ Open your browser: [http://localhost:8000](http://localhost:8000)
 
 ---
 
 ## 🧱 Project Structure
 
 ```
-rent_wise/                 # Django project root
-├── accounts/              # Handles user registration/login
-├── properties/            # Manages house listings
-├── static/                # Global static assets
+rent_wise/
+├── accounts/              # User authentication (login/register)
+├── properties/            # House/property listing logic
+├── static/                # Static files (CSS, JS, images)
 ├── templates/             # Global HTML templates
-├── .env_sample            # Sample environment variables
-├── .gitignore             # Files ignored by git
-├── manage.py              # Django command-line utility
-├── package.json           # Tailwind + npm dependencies
+├── .env_sample            # Sample env file
+├── .gitignore             # Git ignored files
+├── manage.py              # Django CLI entry point
+├── package.json           # Tailwind/npm setup
 ├── package-lock.json      # NPM lock file
 └── .vscode/               # (Optional) VSCode settings
 ```
 
 ---
 
-## 🛠 Tailwind Setup
+## 🎨 Tailwind Setup
 
-This project uses Tailwind CSS via npm.
+This project uses [Tailwind CSS](https://tailwindcss.com/) via npm.
 
-To compile Tailwind:
+To start the Tailwind watcher:
 
 ```bash
 npx tailwindcss -i ./static/src/input.css -o ./static/css/output.css --watch
 ```
 
-You can automate this with a script in `package.json`.
+You can also define this as a script in `package.json`:
+
+```json
+"scripts": {
+  "dev": "tailwindcss -i ./static/src/input.css -o ./static/css/output.css --watch"
+}
+```
+
+Then just run:
+
+```bash
+npm run dev
+```
 
 ---
 
 ## 📜 License
 
-This project is licensed under the **MIT License**.
+Licensed under the **MIT License**.
 
 ---
 
-> Made with 🧠 by \PyWise using Django + Tailwind ❤️
+> 🧠 Made with care by **PyWise** using Django + Tailwind ❤️

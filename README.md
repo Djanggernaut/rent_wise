@@ -1,5 +1,3 @@
----
-
 ````markdown
 # 🏡 Rent Wise – House Catalog Web App
 

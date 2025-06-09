@@ -7,7 +7,7 @@ Users can browse, list, and manage rental properties with ease.
 
 
 ### ⚙️ Tech Stack
----
+
 
 - 🐍 **Backend:** Django (Python)
 - 🎨 **Frontend:** Tailwind CSS via npm
@@ -15,12 +15,12 @@ Users can browse, list, and manage rental properties with ease.
 - 🏘️ **Listings:** Managed by the `properties` app
 - 🛠️ **Tooling:** Environment variables with `.env`
 
----
+
 
 
 ### ✨ Features
 
----
+
 
 - 🏠 Create, update, and delete house listings
 - 🔍 Filter and search through properties
@@ -29,7 +29,7 @@ Users can browse, list, and manage rental properties with ease.
 - 📱 Fully responsive layout with Tailwind
 - ✅ Built-in email validation
 
----
+
 
 ## 🚀 Getting Started
 

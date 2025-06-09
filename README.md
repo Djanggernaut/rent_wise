@@ -1,12 +1,13 @@
-````markdown
+
 # 🏡 Rent Wise – House Catalog Web App
 
 **Rent Wise** is a modern, responsive house catalog application built with **Django** and **Tailwind CSS**.  
 Users can browse, list, and manage rental properties with ease.
 
----
 
-## ⚙️ Tech Stack
+
+### ⚙️ Tech Stack
+---
 
 - 🐍 **Backend:** Django (Python)
 - 🎨 **Frontend:** Tailwind CSS via npm
@@ -16,7 +17,10 @@ Users can browse, list, and manage rental properties with ease.
 
 ---
 
-## ✨ Features
+
+### ✨ Features
+
+---
 
 - 🏠 Create, update, and delete house listings
 - 🔍 Filter and search through properties

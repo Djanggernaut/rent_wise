@@ -32,7 +32,7 @@ Rent Wise is a modern and responsive house catalog web application built with **
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/rent_wise.git
+git clone https://github.com/PyWise/rent_wise.git
 cd rent_wise
 ````
 
